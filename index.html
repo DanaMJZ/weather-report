@@ -9,13 +9,15 @@
     
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
-    <script src="src/index.js" defer></script>
+    <script type="module" src="src/index.js" defer></script>
 </head>
 <body>
     <div class="container">
         <header>
             <h1 id="app-title">Weather App</h1>
         </header>
+        <span>showing the weather for 
+            <span id="headerCityName" class="header__city-name">aName</span></span>
 
         <section class="city-section">
             <div class="city-display">
