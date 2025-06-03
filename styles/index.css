@@ -1,0 +1,231 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#app-title {
+    color: #00796b;
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.header__city-name {
+    font-weight: bold;
+    color: #00695c;
+}
+
+
+.city-section {
+    background-color: #e8f5e9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.city-display {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#city-name {
+    font-size: 1.8rem;
+    color: #2e7d32;
+    margin: 0;
+}
+
+.city-input {
+    display: flex;
+    gap: 10px;
+}
+
+#city-input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 2px solid #81c784;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+#city-input:focus {
+    outline: none;
+    border-color: #4caf50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+#rename-city-btn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#rename-city-btn:hover {
+    background-color: #3d8b40;
+    transform: translateY(-2px);
+}
+
+
+.sky-display {
+    font-size: 3rem;
+    text-align: center;
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #e3f2fd;
+    border-radius: 10px;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.controls-section {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.temperature-control, .sky-control {
+    flex: 1;
+    background-color: #fff8e1;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.temperature-control h3, .sky-control h3 {
+    margin-top: 0;
+    color: #5d4037;
+}
+
+.temp-display {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 15px 0;
+    transition: color 0.3s;
+}
+
+
+.temp-hot { color: #e53935; }      /* 80+°F */
+.temp-warm { color: #fb8c00; }     /* 70-79°F */
+.temp-mild { color: #fdd835; }     /* 60-69°F */
+.temp-cool { color: #43a047; }     /* 50-59°F */
+.temp-cold { color: #1e88e5; }     /* Below 50°F */
+
+.temp-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.temp-buttons button {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 50%;
+    background-color: #5d4037;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.temp-buttons button:hover {
+    transform: scale(1.1);
+}
+
+#sky-type {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #bcaaa4;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+
+.landscape-display {
+    font-size: 2.5rem;
+    text-align: center;
+    padding: 20px;
+    background-color: #d7ccc8;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    min-height: 100px;
+}
+
+
+.action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.action-buttons button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#get-temp-btn {
+    background-color: #3949ab;
+    color: white;
+}
+
+#get-temp-btn:hover {
+    background-color: #303f9f;
+    transform: translateY(-2px);
+}
+
+#reset-city-btn {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+#reset-city-btn:hover {
+    background-color: #bdbdbd;
+    transform: translateY(-2px);
+}
+
+
+@media (max-width: 600px) {
+    .controls-section {
+        flex-direction: column;
+    }
+    
+    .temp-display {
+        font-size: 2.5rem;
+    }
+    
+    .sky-display, .landscape-display {
+        font-size: 2rem;
+    }
+}
