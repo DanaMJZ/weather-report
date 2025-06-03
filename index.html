@@ -2,14 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Report</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles/index.css" />
+    <title>Weather App</title>
+    
+    <link rel="stylesheet" href="styles/index.css">
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+    <script src="src/index.js" defer></script>
 </head>
 <body>
-    <script src="./src/index.js"></script>
+    <div class="container">
+        <header>
+            <h1 id="app-title">Weather App</h1>
+        </header>
+
+        <section class="city-section">
+            <div class="city-display">
+                <h2 id="city-name">City Name</h2>
+            </div>
+            <div class="city-input">
+                <input type="text" id="city-input" placeholder="Enter city name">
+                <button id="rename-city-btn">Rename City</button>
+            </div>
+        </section>
+
+        <section class="sky-section">
+            <div id="sky-display" class="sky-display">
+                
+            </div>
+        </section>
+
+        <section class="controls-section">
+            <div class="temperature-control">
+                <h3>Temperature</h3>
+                <div class="temp-display">
+                    <span id="temperature">72</span>°
+                </div>
+                <div class="temp-buttons">
+                    <button id="increase-temp">+</button>
+                    <button id="decrease-temp">-</button>
+                </div>
+            </div>
+            
+            <div class="sky-control">
+                <h3>Sky Type</h3>
+                <select id="sky-type">
+                    <option value="sunny">Sunny</option>
+                    <option value="cloudy">Cloudy</option>
+                    <option value="rainy">Rainy</option>
+                    <option value="snowy">Snowy</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="landscape-section">
+            <div id="landscape-display" class="landscape-display">
+                
+            </div>
+        </section>
+
+        <section class="action-buttons">
+            <button id="get-temp-btn">Get Current Temperature</button>
+            <button id="reset-city-btn">Reset City Name</button>
+        </section>
+    </div>
 </body>
 </html>
