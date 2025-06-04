@@ -143,7 +143,6 @@ const getWeather = () => {
     const increaseTempBtn = document.getElementById('increase-temp');
     const decreaseTempBtn = document.getElementById('decrease-temp');
     
-    const getTempBtn = document.getElementById('get-temp-btn');  // TEMP might be displayed the moment it comes from response, no need for button
     const skySelect = document.getElementById('sky-type');
 
     //update city name as user types
