@@ -74,6 +74,17 @@ const showCurrentTemp = (temp) => {
   tempDisplay.textContent = temp;
 };
 
+const updateTemp = (delta) => {
+  const tempDisplay = document.getElementById('temperature');
+  let currentTemp = parseInt(tempDisplay.textContent, 10);
+  tempDisplay.textContent = currentTemp + delta;
+}
+
+const increaseTemp = () => updateTemp(1);
+
+const decreaseTemp = () => updateTemp(-1);
+
+
 //update sky display based on selection (wave5)
 const updateSkyDisplay = () => {
     const skySelect = document.getElementById('sky-type');
@@ -122,21 +133,30 @@ const getWeather = () => {
       console.log('Error getting the weather:', error);
     });
 };
+
   // all event listeners
   const registerEventHandlers = () => {
     const cityNameInput = document.getElementById('city-input');
     const cityRenameBtn = document.getElementById('rename-city-btn');
     const cityResetBtn = document.getElementById('reset-city-btn');
+    const getTempBtn = document.getElementById('get-temp-btn');  //TEMP might be displayed the moment it comes from response, no need for button
+    const increaseTempBtn = document.getElementById('increase-temp');
+    const decreaseTempBtn = document.getElementById('decrease-temp');
+    
     const getTempBtn = document.getElementById('get-temp-btn');  // TEMP might be displayed the moment it comes from response, no need for button
     const skySelect = document.getElementById('sky-type');
 
     //update city name as user types
     cityNameInput.addEventListener('input', updateCityName);
 
-    //button clicks
+    //button clicks - city
     cityRenameBtn.addEventListener('click', renameCity);
     cityResetBtn.addEventListener('click', resetCityName);
+
+    //button clicks - weather
     getTempBtn.addEventListener('click', getWeather); 
+    increaseTempBtn.addEventListener('click', increaseTemp);
+    decreaseTempBtn.addEventListener('click', decreaseTemp);
     //sky selection change (Wave5)
     skySelect.addEventListener('change', updateSkyDisplay);
 };
