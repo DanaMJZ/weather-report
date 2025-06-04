@@ -2,6 +2,14 @@
 // const LOCAL_PROXY_URL = 'http://localhost:5000';
 const PROXY_URL = 'https://weather-report-proxy-server-qs3s.onrender.com';
 
+//sky options configuration (wave 5)
+const SKY_OPTIONS = {
+    sunny: '☁️ ☁️ ☁️ ☀️ ☁️ ☁️',
+    cloudy: '☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️',
+    rainy: '🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧',
+    snowy: '🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨'
+};
+
 const queryCityName = () => {
   return document.getElementById('city-input').value;
 };
@@ -19,7 +27,6 @@ const findCoordinates = (queryCityName) => {
     })
     .then((response) => {
       console.log('Raw location data:', response.data);
-      // Check if data exists before destructuring
       if (!response.data || response.data.length === 0) {
         throw new Error('No location data returned from API');
   }
@@ -27,7 +34,7 @@ const findCoordinates = (queryCityName) => {
       longitude = response.data[0].lon;
       console.log('success in findCoordinates!', latitude, longitude);
 
-      return {latitude, longitude}; // Return the data we want to pass on
+      return {latitude, longitude}; 
     })
     .catch((error) => {
       console.log('error in findCoordinates');
@@ -67,6 +74,15 @@ const showCurrentTemp = (temp) => {
   tempDisplay.textContent = temp;
 };
 
+//update sky display based on selection (wave5)
+const updateSkyDisplay = () => {
+    const skySelect = document.getElementById('sky-type');
+    const skyDisplay = document.getElementById('sky-display');
+    const selectedSky = skySelect.value;
+    
+    skyDisplay.textContent = SKY_OPTIONS[selectedSky];
+};
+
 //get weather data from lat and lon
 const getWeather = () => {
   const city = queryCityName()
@@ -85,6 +101,22 @@ const getWeather = () => {
       //const for temperature number//
       const currentTemp = Math.round(convertTemp(response.data.main.temp));
       showCurrentTemp(currentTemp);
+
+      //update sky condition based on API response (wave5 bonus)
+        const weatherCondition = response.data.weather[0].main.toLowerCase();
+        const skySelect = document.getElementById('sky-type');
+        
+        if (weatherCondition.includes('clear')) {
+            skySelect.value = 'sunny';
+        } else if (weatherCondition.includes('cloud')) {
+            skySelect.value = 'cloudy';
+        } else if (weatherCondition.includes('rain')) {
+            skySelect.value = 'rainy';
+        } else if (weatherCondition.includes('snow')) {
+            skySelect.value = 'snowy';
+        }
+        
+        updateSkyDisplay();
     })
     .catch((error) => {
       console.log('Error getting the weather:', error);
@@ -95,8 +127,9 @@ const getWeather = () => {
     const cityNameInput = document.getElementById('city-input');
     const cityRenameBtn = document.getElementById('rename-city-btn');
     const cityResetBtn = document.getElementById('reset-city-btn');
-    const getTempBtn = document.getElementById('get-temp-btn'); - //TEMP might be displayed the moment it comes from response, no need for button
-    
+    const getTempBtn = document.getElementById('get-temp-btn');  // TEMP might be displayed the moment it comes from response, no need for button
+    const skySelect = document.getElementById('sky-type');
+
     //update city name as user types
     cityNameInput.addEventListener('input', updateCityName);
 
@@ -104,7 +137,16 @@ const getWeather = () => {
     cityRenameBtn.addEventListener('click', renameCity);
     cityResetBtn.addEventListener('click', resetCityName);
     getTempBtn.addEventListener('click', getWeather); 
-
+    //sky selection change (Wave5)
+    skySelect.addEventListener('change', updateSkyDisplay);
 };
 
-document.addEventListener('DOMContentLoaded', registerEventHandlers);
+//initialize sky display on load (wave5)
+const initializeSkyDisplay = () => {
+    const skyDisplay = document.getElementById('sky-display');
+    skyDisplay.textContent = SKY_OPTIONS['sunny']; 
+};
+
+
+
+document.addEventListener('DOMContentLoaded', registerEventHandlers, initializeSkyDisplay);
