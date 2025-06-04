@@ -52,9 +52,9 @@ const renameCity = () => {
 
 //'reset city name' button click
 const resetCityName = () => {
-  const cityNameInput = document.getElementById('cityNameInput');
-  cityNameInput.value = 'Seattle';
-  updateCityName();
+  const cityNameInput = document.getElementById('city-input');
+  cityNameInput.value = 'Seattle'; //input field default value
+  updateCityName(); //updates the displayed name
 };
 
 //convert temp from weather API response from K to F
