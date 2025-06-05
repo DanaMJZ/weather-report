@@ -137,10 +137,10 @@ const decreaseTemp = () => updateTemp(-1);
 const updateCityName = () => {
   const input = document.getElementById('city-input');
   const cityNameDisplay = document.getElementById('city-name');
-  const headerCityDisplay = document.getElementById('headerCityName')
+  // const headerCityDisplay = document.getElementById('city-name') - shows nothing
 
   cityNameDisplay.textContent = input.value;
-  headerCityDisplay.textContent = input.value;
+  // headerCityDisplay.textContent = input.value; - shows nothing
 };
 
 //'rename city' button click - NO DESIGNATION FOR THAT BUTTON
